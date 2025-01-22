@@ -24,7 +24,7 @@ spec:
        tier: db
     spec:
        containers:
-       - name: mysql 
+       - name: mysql
          image: lingadevops/mysql:v1.0 # Please use your own image here. lingadevops/mysql:v1.0           
 ---
 apiVersion: v1

@@ -9,7 +9,7 @@ ENV MYSQL_ROOT_PASSWORD=ExpenseApp@1 \
 RUN chown -R expense:expense /var/lib/mysql /var/run/mysqld
 COPY scripts/*.sql /docker-entrypoint-initdb.d/
 
-# Remaining all, We run MySQL dockerfile as root user by not including USER expense.
+# 2. MySQL Dockerfile: Remaining all, We run MySQL dockerfile as root user by not including USER expense.
 FROM mysql:8.0
 ENV MYSQL_ROOT_PASSWORD=ExpenseApp@1
 RUN groupadd expense && \

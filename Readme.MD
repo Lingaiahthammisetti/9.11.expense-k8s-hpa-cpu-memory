@@ -1,3 +1,27 @@
+# How to create and delete all pods? 
+```
+kubectl apply -f mysql/manifest.yaml
+```
+```
+kubectl apply -f backend/manifest.yaml
+```
+```
+kubectl apply -f frontend/manifest.yaml
+```
+```
+kubectl apply -f frontend/hpa.yaml
+```
+```
+kubectl apply -f debug/manifest.yaml
+```
+```
+kubectl apply -f namespace.yaml
+```
+
+```
+kubectl delete pods --all -n your-namespace
+```
+
 # 1. MySQL Dockerfile: In docker best practices, We run images as non-root user by adding USER expense at the end of the dockerfile. 
 FROM mysql:8.0
 # not a human, only for system
@@ -33,7 +57,7 @@ resources: # added for HPA autoscalling in Kubernetes
 and Horizontal Pod Autoscaling is also created.
 
 hpa.yaml
-
+=============
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -53,3 +77,6 @@ spec:
       target:
         type: Utilization
         averageUtilization: 20
+
+$yum install httpd-tools -y
+ab -n 10000 -c 100 "http://a5cc80af4a20545da8e9840001bcd083-446768232.us-east-1.elb.amazonaws.com/"

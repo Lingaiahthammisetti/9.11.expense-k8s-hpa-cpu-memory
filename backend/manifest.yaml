@@ -6,6 +6,8 @@ metadata:
 data:
   DB_HOST: mysql # mysql component service name
   #DB_HOST: db-dev.lingaiah.online
+
+  #the app to connect to internal (mysql) or external (db-dev.lingaiah.online) databases without changing the code.
 ---
 kind: Deployment
 apiVersion: apps/v1

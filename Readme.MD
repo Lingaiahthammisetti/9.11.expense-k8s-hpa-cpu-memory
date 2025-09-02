@@ -1,3 +1,7 @@
+* A ConfigMap stores configuration data like DB_HOST separately from code, allowing the app to connect to internal (mysql) or external (db-dev.lingaiah.online) databases without changing the code.
+
+* You can attach values from a ConfigMap or Secret to volumes using the volumes and volumeMounts fields in a Pod spec.
+
 # How to create and delete all pods? 
 ```
 kubectl apply -f mysql/manifest.yaml
@@ -45,7 +49,7 @@ USER expense
     # MYSQL_USER=expense \
     # MYSQL_PASSWORD=ExpenseApp@1
 
-# Note: We have added resources limits to backend and frontend servers.
+# Note: We have added resources limits to backend and frontend servers. if need we can add to db server also.
 resources: # added for HPA autoscalling in Kubernetes
   requests:
     cpu: "100m"

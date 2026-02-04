@@ -1,3 +1,27 @@
+
+# Real-world best practice
+
+A very common pattern:
+
+resources:
+  requests:
+    cpu: "250m"
+    memory: "256Mi"
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+
+
+Then HPA like:
+
+targetCPUUtilizationPercentage: 70
+
+
+Meaning:  “Add pods when average CPU usage exceeds 70% of 250m”
+
+* We add resource requests and limits because HPA uses resource requests to decide when to scale, and limits prevent pods from consuming too many resources, keeping autoscaling predictable and the cluster stable.
+
+
 * A ConfigMap stores configuration data like DB_HOST separately from code, allowing the app to connect to internal (mysql) or external (db-dev.lingaiah.online) databases without changing the code.
 
 * You can attach values from a ConfigMap or Secret to volumes using the volumes and volumeMounts fields in a Pod spec.
